@@ -1,0 +1,11 @@
+{
+  "name": "nduuid",
+  "version": "0.1.0",
+  "description": "non-dashes universally unique identifier",
+  "main": "index.js",
+  "author": "Alperen Coşkun <dev@alpcoskun.com>",
+  "repository": "github:alpcoskun/nduuid",
+  "bugs": { "url": "https://github.com/alpcoskun/nduuid/issues" },
+  "license": "MIT",
+  "keywords": ["uuid", "dashes"]
+}

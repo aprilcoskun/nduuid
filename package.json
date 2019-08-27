@@ -1,11 +1,19 @@
 {
   "name": "nduuid",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "non-dashes universally unique identifier",
   "main": "index.js",
   "author": "Nisan Coşkun <dev@alpcoskun.com>",
   "repository": "github:alpcoskun/nduuid",
-  "bugs": { "url": "https://github.com/alpcoskun/nduuid/issues" },
+  "bugs": {
+    "url": "https://github.com/aprilcoskun/nduuid/issues"
+  },
   "license": "MIT",
-  "keywords": ["uuid", "dashes"]
+  "keywords": [
+    "uuid",
+    "dashes"
+  ],
+  "devDependencies": {
+    "uuid": "^3.3.3"
+  }
 }

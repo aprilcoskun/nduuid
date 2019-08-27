@@ -1,22 +1,30 @@
-const crypto = require('crypto');
-const convert = require('./convert');
-
+const { randomBytes } = require('crypto');
+const hexBytes = require('./hexBytes');
 // Inspired by https://github.com/kelektiv/node-uuid
 
 /**
  * @returns {String} uuid v4 without dashes 
  */
 function v4() {
-  let i = 0;
-  let r = crypto.randomBytes(16);
-  let h = [];
-
-  for (let i = 0; i < 256; ++i) h[i] = (i + 0x100).toString(16).substr(1);
-
-  r[6] = (r[6] & 0x0f) | 0x40;
-  r[8] = (r[8] & 0x3f) | 0x80;
-
-  return convert(r);
+  const r = randomBytes(16);
+  return (
+    hexBytes[r[0]] +
+    hexBytes[r[1]] +
+    hexBytes[r[2]] +
+    hexBytes[r[3]] +
+    hexBytes[r[4]] +
+    hexBytes[r[5]] +
+    hexBytes[(r[6] & 0x0f) | 0x40] +
+    hexBytes[r[7]] +
+    hexBytes[(r[8] & 0x3f) | 0x80] +
+    hexBytes[r[9]] +
+    hexBytes[r[10]] +
+    hexBytes[r[11]] +
+    hexBytes[r[12]] +
+    hexBytes[r[13]] +
+    hexBytes[r[14]] +
+    hexBytes[r[15]]
+  );
 }
 
 module.exports = v4;

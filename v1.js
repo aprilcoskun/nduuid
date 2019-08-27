@@ -1,5 +1,5 @@
-const crypto = require('crypto');
-const convert = require('./convert');
+const { randomBytes } = require('crypto');
+const hexBytes = require('./hexBytes');
 
 let id;
 let _clockseq;
@@ -13,14 +13,14 @@ let prevNSecs = 0;
  * @returns {String} uuid v1 without dashes 
  */
 function v1() {
+  const r = [];
   let i = 0;
-  let r = [];
 
   let node = id;
   let clockseq = _clockseq;
 
   if (node == null || clockseq == null) {
-    let seeds = crypto.randomBytes(16);
+    let seeds = randomBytes(16);
     if (node == null)
       node = id = [
         seeds[0] | 0x01,
@@ -68,7 +68,24 @@ function v1() {
 
   for (let n = 0; n < 6; ++n) r[i + n] = node[n];
 
-  return convert(r);
+  return (
+    hexBytes[r[0]] +
+    hexBytes[r[1]] +
+    hexBytes[r[2]] +
+    hexBytes[r[3]] +
+    hexBytes[r[4]] +
+    hexBytes[r[5]] +
+    hexBytes[r[6]] +
+    hexBytes[r[7]] +
+    hexBytes[r[8]] +
+    hexBytes[r[9]] +
+    hexBytes[r[10]] +
+    hexBytes[r[11]] +
+    hexBytes[r[12]] +
+    hexBytes[r[13]] +
+    hexBytes[r[14]] +
+    hexBytes[r[15]]
+  );
 }
 
 module.exports = v1;
